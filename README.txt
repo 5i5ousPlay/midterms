@@ -11,11 +11,11 @@ CSCI 40 Midterms
 widget_robo_mommy
 
 APP_ASSIGNMENTS:
-Dashboard - TBA
-Announcement Board - TBA
-Forum - TBA
-Assignments - TBA
-Calendar - TBA
+Dashboard - CHESKA
+Announcement Board - JIUVI
+Forum - RJ
+Assignments - LANCE
+Calendar - AL
 
 DATE_OF_SUBMISSION: **/**/**
 
