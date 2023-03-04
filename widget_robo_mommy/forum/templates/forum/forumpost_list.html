@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forum Post List</title>
+</head>
+<ul>
+    {% for forumpost in object_list %}
+        <li>{{forumpost.title}}</li>
+    {%empty%}
+        <li>No forumposts yet.</li>
+    {%endfor%}
+</ul>
+</html>
