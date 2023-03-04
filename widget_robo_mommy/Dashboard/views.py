@@ -1,5 +1,7 @@
-from django.shortcuts import HttpResponse
+from .models import Department
+from django.views import generic
 
 
-def index(request):
-    return HttpResponse("Welcome to Cheska's Music Library!")
+class DepartmentView(generic.ListView):
+    model = Department
+    template_name = 'Dashboard/Dashboard.html'
