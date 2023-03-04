@@ -6,3 +6,5 @@ from .models import ForumPost, Reply
 class ForumPostListView(generic.ListView):
     model = ForumPost
     template_name = 'forum/forumpost_list.html'
+    queryset = ForumPost.objects.all()
+    context_object_name = 'forumposts'
