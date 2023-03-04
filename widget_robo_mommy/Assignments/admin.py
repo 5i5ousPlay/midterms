@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Subject, IndexCard
+from .models import Assignment, Course
 
 class AssignmentAdmin(admin.ModelAdmin):
     model = Assignment
