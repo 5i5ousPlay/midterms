@@ -3,7 +3,7 @@ from django.db import models
 class Assignment(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
-    course = models.CharField(max_length=255, blank=True, null=True)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
     perfect_score = models.IntegerField(blank=True, null=True)
     passing_score = models.IntegerField(blank=True, null=True)
 
