@@ -4,11 +4,16 @@
     <Head>
         <h1>Welcome to Widget!</h1>
     </Head>
-        {{% block content %}}
+
 
         <h2>WIDGET USERS</h2>
-        <body>{{Department.dept_name}}{{Department.dept_unit}}</body>
+        <ul>
+            {% for Department in object_list %}
+            <li>{{Department.dept_name}}, {{Department.home_unit}}</li>
+            {% endfor %}
+
+        </ul>
+       
         
 
-        {{% endblock content %}}
 </HTML>
