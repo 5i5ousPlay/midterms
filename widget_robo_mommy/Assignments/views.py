@@ -15,7 +15,7 @@ def index(request):
                    Description: {assignments.description}<br>
                    Perfect Score: {assignments.perfect_score}<br>
                    Passing Score: {assignments.passing_score}<br>
-                   Course/Section: {assignments.course.code} {assignments.course.title}-{cassignments.course.section}<br>
+                   Course/Section: {assignments.course.code} {assignments.course.title}-{assignments.course.section}<br>
                    <br>"""
 
     return HttpResponse(output)
