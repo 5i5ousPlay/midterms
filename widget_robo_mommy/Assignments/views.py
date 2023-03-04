@@ -10,7 +10,7 @@ def index(request):
     for i in range(1, count + 1):
         assignments = Assignment.objects.get(id=i)
         courses = Course.objects.get(id=i)
-        output += (f"Assignment Name: {assignments.mame}\n"
+        output += (f"Assignment Name: {assignments.name}\n"
                    f"Description: {assignments.description}\n"
                    f"Perfect Score: {assignments.perfect_score}\n"
                    f"Passing Score: {assignments.passing_score}\n"
