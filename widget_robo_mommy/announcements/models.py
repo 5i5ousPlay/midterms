@@ -1,10 +1,11 @@
 from django.db import models
+from Dashboard.models import WidgetUser
 
 class Announcement(models.Model):
     title = models.TextField(null=True, blank=True)
     body = models.TextField(null=True, blank=True)
-    author = models.CharField(max_length=255, null=True, blank=True)
-    pub_datetime = models.DateTimeField(null=True, blank=True)
+    author = models.ForeignKey(WidgetUser, on_delete=models.CASCADE, null=True)
+    pub_datetime = models.DateTimeField(null=True)
 
 class Reaction(models.Model):
     LIKE = 'Like'
@@ -18,6 +19,6 @@ class Reaction(models.Model):
 
     name = models.CharField(max_length=5, default=LIKE, null=True, blank=True)
     tally = models.IntegerField(default=0 ,null=True, blank=True)
-    announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE, null=True, blank=True)
+    announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE, null=True)
 
 # Create your models here.
