@@ -1,12 +1,14 @@
 from django.db import models
 
 
+MODE_TYPES = (
+    ('onsite', 'Onsite'),
+    ('online', 'Online'),
+    ('hybrid', 'Hybrid'),
+)
+
+
 class Location(models.Model):
-    MODE_TYPES = (
-        ('onsite', 'Onsite'),
-        ('online', 'Online'),
-        ('hybrid', 'Hybrid'),
-    )
     mode = models.CharField(max_length=6, choices=MODE_TYPES)
     venue = models.CharField(max_length=100)
 
