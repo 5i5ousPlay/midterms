@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
-
+DIRNAME = os.path.abspath(os.path.dirname(__file__))
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'django-insecure-t*s#_++5=ze%3#*ns6vcmt8a5bw6249en-!ek7*#3=p-dkhl_f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,12 +36,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'Assignments',
+    'forum.apps.ForumConfig',
+    'Dashboard.apps.DashboardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tz_detect',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Hong_Kong'
 
 USE_I18N = True
 
