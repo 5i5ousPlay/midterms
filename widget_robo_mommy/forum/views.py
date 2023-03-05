@@ -7,7 +7,7 @@ from django.utils import timezone
 
 # helper function to convert utc datetime object to local time
 def convert_utc_to_local(utctime):
-    datetime_format = '%d/%m/%Y %H:%M'
+    datetime_format = '%d/%m/%Y %I:%M %p'
     utc = utctime.replace(tzinfo=pytz.UTC)
     localtz = utc.astimezone(timezone.get_current_timezone())
     return localtz.strftime(datetime_format)
