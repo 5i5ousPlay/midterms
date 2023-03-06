@@ -25,6 +25,8 @@ We do solemnly swear that everything here was completely and totally hontou ni d
 
 REFERENCES:
 https://stackoverflow.com/questions/26812805/django-convert-utc-to-local-time-zone-in-views
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Home_page
+https://docs.djangoproject.com/en/4.1/
 
 SIGNATURES:
 (sgd) Bomediano, Al Vincent E. 06/03/2023
