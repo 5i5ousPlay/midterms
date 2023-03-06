@@ -1,4 +1,5 @@
 from django.db import models
+from Assignments.models import Course
 
 
 MODE_TYPES = (
@@ -24,7 +25,7 @@ class Event(models.Model):
         Location,
         on_delete=models.CASCADE
     )
-    course = models.CharField(max_length=20)
+    course = models.ForeignKey(Course, related_name='event', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return '{} on {}'.format(self.activity, self.target_datetime)

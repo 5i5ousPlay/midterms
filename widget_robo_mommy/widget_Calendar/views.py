@@ -17,7 +17,7 @@ def index(request):
             eventItem.target_datetime,
             eventItem.activity,
             eventItem.estimated_hours,
-            eventItem.course,
+            eventItem.course.code,
             eventItem.location.mode,
             eventItem.location.venue,
         )
