@@ -1,9 +1,11 @@
 from django.db import models
 
+
 class Course(models.Model):
     code = models.CharField(max_length=10, blank=True, null=True)
     title = models.CharField(max_length=255, blank=True, null=True)
     section = models.CharField(max_length=3, blank=True, null=True)
+
 
 class Assignment(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
