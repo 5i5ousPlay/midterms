@@ -23,7 +23,7 @@ def index(request):
                         {}".format(announced.title, announced.author.first_name,
                         announced.author.last_name,
                         convert_to_localtime(announced.pub_datetime), announced.body)
-        for reacts in announced.reaction.all():
+        for reacts in announced.reaction_set.all():
             html_string_2 += "{}: {}<br />".format(reacts.name, reacts.tally)
     
     html_string_final = html_string_1 + html_string_2 + "</html>"
