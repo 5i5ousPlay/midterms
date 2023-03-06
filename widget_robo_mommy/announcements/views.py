@@ -19,7 +19,7 @@ def index(request):
     
     html_string_2 = ""
     for announced in Announcement.objects.all():
-        html_string_2 += "{} by {} {} published {}<br />:\
+        html_string_2 += "{} by {} {} published {}:\
                         {}".format(announced.title, announced.author.first_name,
                         announced.author.last_name,
                         convert_to_localtime(announced.pub_datetime), announced.body)
