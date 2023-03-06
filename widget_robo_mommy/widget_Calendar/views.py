@@ -1,5 +1,6 @@
 from .models import Event, Location
 from django.http import HttpResponse
+from forum.views import convert_utc_to_local
 
 
 def index(request):
@@ -14,7 +15,7 @@ def index(request):
             Mode: {}<br>
             Venue: {}<br><br>
         '''.format(
-            eventItem.target_datetime,
+            convert_utc_to_local(eventItem.target_datetime, '%d/%m/%Y|%I:%M %p'),
             eventItem.activity,
             eventItem.estimated_hours,
             eventItem.course.code,

@@ -18,7 +18,7 @@ class Location(models.Model):
 
 
 class Event(models.Model):
-    target_datetime = models.CharField(max_length=20)
+    target_datetime = models.DateTimeField()
     activity = models.CharField(max_length=100)
     estimated_hours = models.FloatField()
     location = models.ForeignKey(
