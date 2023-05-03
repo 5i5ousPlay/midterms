@@ -58,7 +58,8 @@ ROOT_URLCONF = 'widget_robo_mommy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 'widget_robo_mommy/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
