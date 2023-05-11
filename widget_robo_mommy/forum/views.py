@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
+from django.urls import reverse
 from .models import ForumPost
 import pytz
 from django.utils import timezone
@@ -26,3 +27,13 @@ class ForumPostDetailView(generic.DetailView):
     template_name = 'forum/forumpost-details.html'
     queryset = ForumPost.objects.all()
     context_object_name = 'posts'
+
+
+class ForumPostCreateView(generic.CreateView):
+    model = ForumPost
+    template_name = 'forum/forumpost-add.html'
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse('forum:forumpostdetailview', kwargs={ 'pk': self.object.id},
+                       current_app=self.request.resolver_match.namespace)
