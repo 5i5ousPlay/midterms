@@ -13,8 +13,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+
 DIRNAME = os.path.abspath(os.path.dirname(__file__))
 load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t*s#_++5=ze%3#*ns6vcmt8a5bw6249en-!ek7*#3=p-dkhl_f'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,6 +37,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'announcements',
+    'Assignments',
     'forum.apps.ForumConfig',
     'Dashboard.apps.DashboardConfig',
     'django.contrib.admin',
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_Calendar',
     'tz_detect',
 ]
 
