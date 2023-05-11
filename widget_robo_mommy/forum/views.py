@@ -37,3 +37,13 @@ class ForumPostCreateView(generic.CreateView):
     def get_success_url(self):
         return reverse('forum:forumpostdetailview', kwargs={ 'pk': self.object.id},
                        current_app=self.request.resolver_match.namespace)
+
+
+class ForumPostUpdateView(generic.UpdateView):
+    model = ForumPost
+    template_name = 'forum/forumpost-edit.html'
+    fields = '__all__'
+
+    def get_success_url(self):
+        return reverse('forum:forumpostdetailview', kwargs={ 'pk': self.object.id},
+                       current_app=self.request.resolver_match.namespace)
