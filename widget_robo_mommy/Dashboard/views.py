@@ -24,7 +24,7 @@ def Dashboard_list_view(request):
     html_string_2 += '</ul></li>'
     html_string_3 = '<a href="/Widgetusers/add"><button value="click here" > Add Widget User</button></a><br><br>'
     html_string_3 += '<a href="/Announcements/">Announcement Board</a><br>'
-    html_string_3 += '<a href="/Forum/">Forum</a><br>'
+    html_string_3 += '<a href="/forum/">Forum</a><br>'
     html_string_3 += '<a href="/Assignments">Assignment</a><br>'
     html_string_3 += '<a href="/Calendar/">Calendar</a><br>'
     html_string_final = html_string_1 + html_string_2 + html_string_3 + '</html>'
