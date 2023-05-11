@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <title>Widget's Forum</title>
+    <h1>Welcome to Widget's Forum</h1>
+
+    <h2>Forum posts:</h2>
+    {% for post in posts %}
+    <a href="forumposts/{{ post.pk }}/details/">{{ post.title }} by {{ post.author.first_name }} {{ post.author.last_name }}</a><br>
+    {% endfor %}
+    <br><br>
+
+    <a href="forumposts/add/"><button value="click here">New Post</button></a><br><br>
+
+    <a href="/Dashboard/">Dashboard</a><br>
+    <a href="/announcements/">Announcements</a><br>
+    <a href="/Assignments/">Assignments</a><br>
+    <a href="/widget_Calendar/">Calendar</a><br>
+{%  endblock content %}
