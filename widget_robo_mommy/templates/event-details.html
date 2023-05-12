@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<title>Event</title>
+
+<br><br>
+<h2>{{object.activity}}</h2>
+<h3>Date and Time: {{object.target_datetime}}</h3>
+<h3>Estimated Hours: {{object.estimated_hours}}</h3>
+<h3>{{course}}</h3>
+<h3>Mode: {{location.mode}}</h3>
+<h3>Venue: {{location.venue}}</h3>
+
+<a href="/Events/{{ object.id }}/edit">
+    <input type="button" value="Edit Event">
+</a>"
+{% endblock content %}

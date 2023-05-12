@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from Assignments.models import Course
 
 
@@ -29,3 +30,10 @@ class Event(models.Model):
 
     def __str__(self):
         return '{} on {}'.format(self.activity, self.target_datetime)
+    
+    def get_absolute_url(self):
+        return reverse('event-detail', kwargs={'pk': self.pk})
+
+    def get_absolute_url(self):
+        return reverse('event-add', kwargs={'pk': self.pk})
+

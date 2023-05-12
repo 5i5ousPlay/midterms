@@ -21,10 +21,6 @@ class WidgetUser(models.Model):
 
     def get_absolute_url(self):
         return reverse('widgetuser-detail', kwargs={'pk': self.pk})
-    
+
     def get_absolute_url(self):
         return reverse('widgetuser-add', kwargs={'pk': self.pk})
-    
-
-
-    

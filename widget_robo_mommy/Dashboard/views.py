@@ -1,7 +1,5 @@
-import string
-from .models import WidgetUser, Department
+from .models import WidgetUser
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views import generic
@@ -33,12 +31,12 @@ def Dashboard_list_view(request):
     return HttpResponse(html_string_final)
 
 
-
 class WidgetUserDetailView(generic.DetailView):
     model = WidgetUser
     template_name = 'widgetuser-details.html'
     queryset = WidgetUser.objects.all()
     context_object_name = 'widgetuser-detail'
+
 
 class WidgetUserAddView(generic.CreateView):
     model = WidgetUser
