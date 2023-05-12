@@ -63,5 +63,5 @@ class EventUpdateView(generic.UpdateView):
     success_url = "widget_Calendar/"
 
     def get_success_url(self):
-        return reverse('widget_Calendar:eventuser-detail', kwargs={'pk': self.object.id},
+        return reverse('widget_Calendar:event-detail', kwargs={'pk': self.object.id},
                        current_app=self.request.resolver_match.namespace)

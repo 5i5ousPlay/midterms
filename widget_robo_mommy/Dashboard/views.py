@@ -1,7 +1,5 @@
 from .models import WidgetUser
 from django.http import HttpResponse
-from django.views.generic.detail import DetailView
-from django.views.generic.list import ListView
 from django.views import generic
 from django.urls import reverse
 
@@ -14,11 +12,13 @@ def Dashboard_list_view(request):
     for wu in WidgetUser.objects.all():
         number = str(wu.pk)
         href = '<a href="/Widgetusers/' + number + '/details">'
-        html_string_2 += '<li>' + href + '{}, {} {}: {}, {}' .format(wu.last_name, 
-                                                         wu.first_name,
-                                                         wu.middle_name,
-                                                         wu.department.dept_name,
-                                                         wu.department.home_unit)
+        html_string_2 += '<li>' + href + '{}, {} {}: {}, {}' .format(
+            wu.last_name,
+            wu.first_name,
+            wu.middle_name,
+            wu.department.dept_name,
+            wu.department.home_unit
+            )
     html_string_2 += '</ul></li>'
     html_string_3 = '<a href="/Widgetusers/add"><button value="click here" > Add Widget User</button></a><br><br>'
     html_string_3 += '<a href="/announcements/">Announcement Board</a><br>'
@@ -27,7 +27,6 @@ def Dashboard_list_view(request):
     html_string_3 += '<a href="/widget_Calendar/">Calendar</a><br>'
     html_string_final = html_string_1 + html_string_2 + html_string_3 + '</html>'
 
-    
     return HttpResponse(html_string_final)
 
 
@@ -57,4 +56,3 @@ class WidgetUserUpdateView(generic.UpdateView):
     def get_success_url(self):
         return reverse('Dashboard:widgetuser-detail', kwargs={'pk': self.object.id},
                        current_app=self.request.resolver_match.namespace)
-    
