@@ -1,5 +1,5 @@
 from django.db import models
-from Assignments.models import Course
+from assignments.models import Course
 
 
 MODE_TYPES = (

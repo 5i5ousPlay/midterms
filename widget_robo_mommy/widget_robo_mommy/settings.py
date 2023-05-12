@@ -38,7 +38,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'announcements',
-    'Assignments',
+    'assignments',
     'forum.apps.ForumConfig',
     'Dashboard.apps.DashboardConfig',
     'django.contrib.admin',
