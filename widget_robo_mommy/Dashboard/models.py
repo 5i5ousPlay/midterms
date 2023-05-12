@@ -16,6 +16,9 @@ class WidgetUser(models.Model):
     last_name = models.CharField(max_length=50)
     department = models.ForeignKey(Department, related_name="department", on_delete=models.CASCADE)
 
+    def __str__(self) -> str:
+        return str(self.last_name + ', ' + self.first_name)
+
     def get_absolute_url(self):
         return reverse('widgetuser-detail', kwargs={'pk': self.pk})
     
