@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <title>Widget's Announcement Board</title>
+    <h1>Welcome to Widget's Announcement Board!</h1>
+
+    <h3>Announcements:</h3>
+    {% for announce in announcement %}
+        <a href = "{{ announce.pk }}/details/">{{ announce.title }} by {{ announce.author.first_name }} {{ announce.author.last_name }}</a><br>
+    {% endfor %} <br>
+	
+    <a href="add/"><button value="click here">Add Announcement</button></a><br><br>
+
+    <a href = "/Dashboard/">Dashboard</a><br>
+    <a href = "/forum/">Forum</a><br>
+    <a href = "/assignments/">Assignments</a><br>
+    <a href = "/widget_Calendar/">Calendar</a>
+
+{% endblock content %}

@@ -19,6 +19,6 @@ class Reaction(models.Model):
 
     name = models.CharField(max_length=5, default=LIKE, null=True, blank=True)
     tally = models.IntegerField(default=0 ,null=True, blank=True)
-    announcement = models.ForeignKey(Announcement, on_delete=models.CASCADE, null=True)
+    announcement = models.ForeignKey(Announcement, related_name="react", on_delete=models.CASCADE, null=True)
 
 # Create your models here.
