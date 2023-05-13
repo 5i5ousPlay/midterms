@@ -7,8 +7,8 @@
     <h1>Welcome to Widget's Announcement Board!</h1>
 
     <h3>Announcements:</h3>
-    {% for announcement in announcements %}
-        <a href = "announcements/{{ announcedetails.pk }}/details/">{{ announcement.title }} by {{ announcement.author.first_name }} {{ announcement.author.last_name }}</a><br>
+    {% for announce in announcement %}
+        <a href = "{{ announce.pk }}/details/">{{ announce.title }} by {{ announce.author.first_name }} {{ announce.author.last_name }}</a><br>
     {% endfor %} <br>
 	
     <a href="add/"><button value="click here">Add Announcement</button></a><br><br>

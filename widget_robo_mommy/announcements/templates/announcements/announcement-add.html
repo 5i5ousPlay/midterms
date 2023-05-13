@@ -5,10 +5,10 @@
 
     <title>Add Announcement</title>
     <h1>Add a new announcement:</h1>
-    <form action="/" method="post">
+    <form action="" method=POST>
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Save Changes to Announcement">
+        <input type="submit" value="Add Announcement">
     </form>
 
 {% endblock content %}
