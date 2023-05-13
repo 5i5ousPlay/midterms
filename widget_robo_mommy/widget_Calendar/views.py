@@ -37,7 +37,7 @@ def index(request):
         <a href="/Dashboard/">Dashboard</a><br>
         <a href="/announcements/">Announcements</a><br>
         <a href="/forum/">Forum</a><br>
-        <a href="/Assignments">Assignments</a><br>
+        <a href="/assignments">Assignments</a><br>
         '''
     return HttpResponse(html_string)
 
