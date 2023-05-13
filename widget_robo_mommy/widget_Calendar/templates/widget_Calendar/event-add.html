@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<title>Add Activity</title>
+
+Add a new activity:
+
+<form method="post">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+
+        <a href="/Events/{{Event.pk}}/details">
+          <button type="submit">Save New Activity</button>
+        </a>
+        
+
+</form>
+  {% endblock content %}
