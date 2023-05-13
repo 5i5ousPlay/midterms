@@ -3,17 +3,17 @@
 {% load static %}
 
 {% block content %}
-<title>Event</title>
+<title>{{object.activity}}</title>
+
+<h2>{{object.activity}}</h2>
+<br>Date and Time: {{object.target_datetime|date:"m/d/y, h:i A"}}<br>
+<br>Estimated Hours: {{object.estimated_hours}}<br>
+<br>{{object.course.code}} {{object.course.title}} - {{object.course.section}}<br>
+<br>Mode: {{object.location.mode}}<br>
+<br>Venue: {{object.location.venue}}<br>
 
 <br><br>
-<h2>{{object.activity}}</h2>
-<h3>Date and Time: {{object.target_datetime}}</h3>
-<h3>Estimated Hours: {{object.estimated_hours}}</h3>
-<h3>{{course}}</h3>
-<h3>Mode: {{location.mode}}</h3>
-<h3>Venue: {{location.venue}}</h3>
-
 <a href="edit">
-    <input type="button" value="Edit Event">
-</a>"
+    <input type="button" value="Edit Activity">
+</a>
 {% endblock content %}

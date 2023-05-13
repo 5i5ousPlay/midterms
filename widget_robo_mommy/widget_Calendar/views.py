@@ -6,7 +6,10 @@ from django.urls import reverse
 
 
 def index(request):
-    html_string = 'robo_mommy’s Calendar of Activities<br><ul>'
+    html_string = '''
+    <title>robo_mommy’s Calendar of Activities</title>
+    <h2>robo_mommy’s Calendar of Activities</h2><ul>
+    '''
     for eventItem in Event.objects.all():
         eventId = str(eventItem.pk)
         href = '<a href="widget_Calendar/Events/'+eventId+'/details">'

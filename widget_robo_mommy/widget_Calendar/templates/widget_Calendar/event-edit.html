@@ -3,13 +3,16 @@
 {% load static %}
 
 {% block content %}
-<h1>Edit Event</h1>
+
+<title>Edit Activity</title>
+
+Edit Activity:<br>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <input type="submit" value="Edit Event" />
+    <input type="submit" value="Save New Activity" />
   </a>
 </form>
   {% endblock content %}
