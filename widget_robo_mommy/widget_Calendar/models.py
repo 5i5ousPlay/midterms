@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from Assignments.models import Course
+from assignments.models import Course
 
 
 MODE_TYPES = (
