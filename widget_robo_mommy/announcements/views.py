@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView
 from .models import Announcement, Reaction
 import pytz
 from django.utils import timezone
@@ -20,13 +21,13 @@ def index(request):
     
     return render(request, 'announcements/announcements.html', context)
 
-class AnnouncementDetailView(DetailView)
+class AnnouncementDetailView(DetailView):
     model = Announcement
     template_name = 'announcements/announcement-detail.html'
-    queryset = Annoucement.objects.all()
+    queryset = Announcement.objects.all()
     context_object_name = 'annoucement-details'
 
-class AnnouncementAddView(CreateView)
+class AnnouncementAddView(CreateView):
     model = Announcement
     fields = '__all__'
     template_name = 'announcement-add.html'
@@ -35,12 +36,12 @@ class AnnouncementAddView(CreateView)
         return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
             current_app=self.request.resolver_match.namespace)
 
-class AnnouncementEditView(UpdateView)
+class AnnouncementEditView(UpdateView):
     model = Announcement
     template_name = 'announcements/announcement-edit'
 
-        def get_success_url(self):
-            return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
-                current_app=self.request.resolver_match.namespace)
+    def get_success_url(self):
+        return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
+            current_app=self.request.resolver_match.namespace)
 
 # Create your views here.
