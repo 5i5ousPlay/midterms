@@ -9,7 +9,7 @@ def index(request):
     html_string = 'robo_mommy’s Calendar of Activities<br><ul>'
     for eventItem in Event.objects.all():
         eventId = str(eventItem.pk)
-        href = '<a href="/Events/'+eventId+'/details">'
+        href = '<a href="widget_Calendar/Events/'+eventId+'/details">'
         html_string += '''
             <br><li> {}
             Date and Time: {}<br>
@@ -30,7 +30,7 @@ def index(request):
         )
     html_string += '''
         </ul>
-        <a href="/Events/add"><button value="click here">New Activity</button></a><br><br>
+        <a href="widget_Calendar/Events/add"><button value="click here">New Activity</button></a><br><br>
         <a href="/Dashboard/">Dashboard</a><br>
         <a href="/announcements/">Announcements</a><br>
         <a href="/forum/">Forum</a><br>
@@ -41,7 +41,7 @@ def index(request):
 
 class EventDetailView(generic.DetailView):
     model = Event
-    template_name = 'event-details.html'
+    template_name = 'widget_Calendar/event-details.html'
     queryset = Event.objects.all()
     context_object_name = 'event-detail'
 
@@ -49,7 +49,7 @@ class EventDetailView(generic.DetailView):
 class EventAddView(generic.CreateView):
     model = Event
     fields = '__all__'
-    template_name = 'event-add.html'
+    template_name = 'widget_Calendar/event-add.html'
 
     def get_success_url(self):
         return reverse('widget_Calendar:event-detail', kwargs={'pk': self.object.id},
@@ -58,7 +58,7 @@ class EventAddView(generic.CreateView):
 
 class EventUpdateView(generic.UpdateView):
     model = Event
-    template_name = 'event-edit.html'
+    template_name = 'widget_Calendar/event-edit.html'
     fields = '__all__'
     success_url = "widget_Calendar/"
 
