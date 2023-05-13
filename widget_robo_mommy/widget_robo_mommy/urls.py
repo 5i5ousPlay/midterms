@@ -22,7 +22,7 @@ urlpatterns = [
     path('widget_Calendar/', include('widget_Calendar.urls', namespace="widget_Calendar")),
     path('', include('Dashboard.urls', namespace="Dashboard")),
     path('admin/', admin.site.urls),
-    path('Assignments/', include('Assignments.urls', namespace="Assignments")),
+    path('assignments/', include('assignments.urls', namespace="assignments")),
     path('', include(('forum.urls', 'forum'), namespace='forum')),
     # path('Dashboard/', include('Dashboard.urls', namespace="Dashboard")),
 ]

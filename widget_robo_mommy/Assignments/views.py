@@ -1,18 +1,31 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView
+
 from .models import Assignment
+from .forms import AssignmentForm
+
+
+class AssignmentDetailsView(DetailView):
+    model = Assignment
+    template_name = 'assignments/assignment-details.html'
+
+
+class AddAssignmentView(CreateView):
+    model = Assignment
+    form_class = AssignmentForm
+    template_name = 'assignments/assignment-add.html'
+
+
+class EditAssignmentView(UpdateView):
+    model = Assignment
+    form_class = AssignmentForm
+    template_name = 'assignments/assignment-edit.html'
 
 
 def index(request):
-    output = f"Widget's Assignments Page<br><br>"
-    count = Assignment.objects.all().count()
-
-    for i in range(1, count + 1):
-        assignments = Assignment.objects.get(id=i)
-        output += f"""Assignment Name: {assignments.name}<br>
-                   Description: {assignments.description}<br>
-                   Perfect Score: {assignments.perfect_score}<br>
-                   Passing Score: {assignments.passing_score}<br>
-                   Course/Section: {assignments.course.code} {assignments.course.title}-{assignments.course.section}<br>
-                   <br>"""
-
-    return HttpResponse(output)
+    assignments = Assignment.objects.all()
+    context = {
+        'assignments': assignments
+    }
+    return render(request, 'assignments/assignments.html', context)

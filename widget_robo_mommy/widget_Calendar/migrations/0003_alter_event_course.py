@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Assignments', '0002_alter_assignment_course'),
+        ('assignments', '0002_alter_assignment_course'),
         ('widget_Calendar', '0002_event_location_delete_indexcard_event_location'),
     ]
 
@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='event',
             name='course',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='event', to='Assignments.course'),
+            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='event', to='assignments.course'),
         ),
     ]
