@@ -8,7 +8,7 @@ Hung, Cheska Elise O. 202550
 Santuyo, Lance Dominic B. 215335
 
 PROJECT TITLE:
-CSCI 40 Midterms
+CSCI 40 Midterms / Final Project
 widget_robo_mommy
 
 APP_ASSIGNMENTS:
