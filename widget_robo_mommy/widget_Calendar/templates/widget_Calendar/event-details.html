@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<title>{{object.activity}}</title>
+
+<h2>{{object.activity}}</h2>
+<br>Date and Time: {{object.target_datetime|date:"m/d/y, h:i A"}}<br>
+<br>Estimated Hours: {{object.estimated_hours}}<br>
+<br>{{object.course.code}} {{object.course.title}} - {{object.course.section}}<br>
+<br>Mode: {{object.location.mode}}<br>
+<br>Venue: {{object.location.venue}}<br>
+
+<br><br>
+<a href="edit">
+    <input type="button" value="Edit Activity">
+</a>
+{% endblock content %}

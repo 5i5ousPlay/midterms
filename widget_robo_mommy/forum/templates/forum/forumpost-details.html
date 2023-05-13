@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <title>{{ posts.title }}</title>
+    <h1>{{ posts.title }}</h1>
+    <h2>by {{ posts.author.first_name }} {{ posts.author.last_name }}</h2>
+    <p>{{ posts.pub_datetime|date:"M/d/Y, f A"}}</p>
+    <p>{{ posts.body }}</p>
+    <h3>POST REPLIES:</h3>
+    {% for reply in posts.reply.all %}
+        by {{ reply.author.first_name }} {{ reply.author.last_name }}<br>
+        {{ reply.pub_datetime|date:"M/d/Y, f A"}}<br>
+        {{ reply.body }}<br><br>
+    {% endfor %}
+    <a href="/forum/forumposts/{{ posts.pk }}/edit/"><button value="click here">Edit Post</button></a>
+{%  endblock content %}

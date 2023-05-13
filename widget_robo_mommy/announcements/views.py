@@ -1,34 +1,48 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView
+from django.urls import reverse
 from .models import Announcement, Reaction
 import pytz
 from django.utils import timezone
 
 
 def convert_to_localtime(utctime):
-    format = '%d/%m/%Y %I:%M %p'
+    format = '%m/%d/%Y %I:%M %p'
     utc = utctime.replace(tzinfo=pytz.UTC)
     localtz = utc.astimezone(timezone.get_current_timezone())
     return localtz.strftime(format)
 
-
 def index(request):
-    html_string_1 = '<html lang="en"><head><meta charset="UTF-8"></head>\
-                    <b><h1>Widget\'s Announcement Board</h1></b>\
-                    <h2>Announcements:</h2><br/>'
+    announcement = Announcement.objects.all().order_by('-pub_datetime')
+    context = {
+        'announcement': announcement
+    }
     
-    html_string_2 = ""
-    for announced in Announcement.objects.all():
-        html_string_2 += "{} by {} {} published {}:<br />\
-                        {}<br/>".format(announced.title, announced.author.first_name,
-                        announced.author.last_name,
-                        convert_to_localtime(announced.pub_datetime), announced.body)
-        for reacts in announced.reaction_set.all():
-            html_string_2 += "{}: {}<br/>".format(reacts.name, reacts.tally)
-        html_string_2 += '<br/>'
+    return render(request, 'announcements/announcements.html', context)
 
-    html_string_final = html_string_1 + html_string_2 + "</html>"
+class AnnouncementDetailView(DetailView):
+    model = Announcement
+    template_name = 'announcements/announcement-details.html'
+    queryset = Announcement.objects.all()
+    context_object_name = 'announce'
+
+class AnnouncementAddView(CreateView):
+    model = Announcement
+    fields =  ['title', 'body', 'author']
+    template_name = 'announcements/announcement-add.html'
     
-    return HttpResponse(html_string_final)
+    def get_success_url(self):
+        return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
+            current_app=self.request.resolver_match.namespace)
+
+class AnnouncementEditView(UpdateView):
+    model = Announcement
+    template_name = 'announcements/announcement-edit.html'
+    fields = ['title', 'body', 'author']
+
+    def get_success_url(self):
+        return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
+            current_app=self.request.resolver_match.namespace)
 
 # Create your views here.

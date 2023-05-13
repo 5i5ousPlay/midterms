@@ -1,5 +1,6 @@
 from django.db import models
-from Assignments.models import Course
+from django.urls import reverse
+from assignments.models import Course
 
 
 MODE_TYPES = (
@@ -18,14 +19,22 @@ class Location(models.Model):
 
 
 class Event(models.Model):
-    target_datetime = models.DateTimeField()
     activity = models.CharField(max_length=100)
+    target_datetime = models.DateTimeField()
     estimated_hours = models.FloatField()
     location = models.ForeignKey(
         Location,
         on_delete=models.CASCADE
     )
-    course = models.ForeignKey(Course, related_name='event', on_delete=models.CASCADE, null=True)
+    course = models.ForeignKey(
+        Course, 
+        related_name='event', 
+        on_delete=models.CASCADE,
+        null=True
+    )
 
     def __str__(self):
         return '{} on {}'.format(self.activity, self.target_datetime)
+
+    def get_absolute_url(self):
+        return reverse('event-detail', kwargs={'pk': self.pk})

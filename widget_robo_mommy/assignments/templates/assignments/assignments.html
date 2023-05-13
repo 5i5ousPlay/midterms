@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <title>Widget's Assignments</title>
+
+    <h1>Welcome to Widget's Assignments!</h1>
+
+    {% for assignment in assignments %}
+        <a href="{{ assignment.pk }}/details/">{{ assignment.name }}</a><br>
+    {% endfor %}
+
+    <br>
+
+    <a href="add/"><button value="click here">New Assignment</button></a><br><br>
+
+    <a href="/Dashboard/">Dashboard</a><br>
+    <a href="/announcements/">Announcements</a><br>
+    <a href="/forum/">Forum</a><br>
+    <a href="/widget_Calendar/">Calendar</a><br>
+{%  endblock content %}

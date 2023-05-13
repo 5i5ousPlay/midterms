@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <title>Edit Announcement</title>
+    <h1>Edit announcement:</h1>
+    <form action="" method=POST>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Changes to Announcement">
+    </form>
+
+{% endblock content %}
