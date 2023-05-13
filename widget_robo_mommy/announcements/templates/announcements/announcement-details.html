@@ -11,7 +11,7 @@
     <p>{{ announcement.body }}</p><br>
 	<p>
         {% for reaction in reaction.model.all %}
-            {{ reaction. name }}: {{ reaction.tally }}<br>
+            {{ reaction.name }}: {{ reaction.tally }}<br>
         {% endfor %}
 	</p>
 

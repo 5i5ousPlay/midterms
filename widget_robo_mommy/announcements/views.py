@@ -23,14 +23,14 @@ def index(request):
 
 class AnnouncementDetailView(DetailView):
     model = Announcement
-    template_name = 'announcements/announcement-detail.html'
+    template_name = 'announcements/announcement-details.html'
     queryset = Announcement.objects.all()
-    context_object_name = 'annoucement-details'
+    context_object_name = 'annoucedetails'
 
 class AnnouncementAddView(CreateView):
     model = Announcement
     fields = '__all__'
-    template_name = 'announcement-add.html'
+    template_name = 'announcements/announcement-add.html'
     
     def get_success_url(self):
         return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
@@ -38,7 +38,7 @@ class AnnouncementAddView(CreateView):
 
 class AnnouncementEditView(UpdateView):
     model = Announcement
-    template_name = 'announcements/announcement-edit'
+    template_name = 'announcements/announcement-edit.html'
 
     def get_success_url(self):
         return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},

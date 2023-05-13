@@ -3,7 +3,7 @@ from .views import index, AnnouncementDetailView, AnnouncementAddView, Announcem
 
 urlpatterns = [
     path('announcements/', index, name='index'),
-    path('announcements/<int:pk>/details/', AnnouncementDetailView.as_view(), name='announcement-detail'),
+    path('announcements/<int:pk>/details/', AnnouncementDetailView.as_view(), name='announcementdetailview'),
     path('announcements/add/', AnnouncementAddView.as_view(), name='announcement-add'),
     path('announcements/<int:pk>/edit/', AnnouncementEditView.as_view(), name='announcement-edit'),
 ]
