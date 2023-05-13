@@ -33,7 +33,7 @@ class AnnouncementAddView(CreateView):
     template_name = 'announcements/announcement-add.html'
     
     def get_success_url(self):
-        return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
+        return reverse('announcements:announcementdetailview', kwargs={'pk': self.object.id},
             current_app=self.request.resolver_match.namespace)
 
 class AnnouncementEditView(UpdateView):
@@ -42,7 +42,7 @@ class AnnouncementEditView(UpdateView):
     fields = ['title', 'body', 'author']
 
     def get_success_url(self):
-        return reverse('announcement:announcementdetailview', kwargs={'pk': self.object.id},
+        return reverse('announcements:announcementdetailview', kwargs={'pk': self.object.id},
             current_app=self.request.resolver_match.namespace)
 
 # Create your views here.
