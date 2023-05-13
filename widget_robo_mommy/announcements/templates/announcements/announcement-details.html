@@ -3,7 +3,17 @@
 
 {% block content %}
 
-<title>Widget's Announcement Board</title>
+    <title>{{announcement.title}}</title>
 
+    <h1>{{announcement.title}}</h1><br>
+    <h2>by</h2><br>
+	
+    <p>{{ announcement.body }}</p><br>
+	<p>
+        {% for reaction in reaction.model.all %}
+            {{ reaction. name }}: {{ reaction.tally }}<br>
+        {% endfor %}
+	</p>
 
+	<a href = "announcements/<int:pk>/edit/"><button value="">Edit Announcement</button></a>
 {% endblock content %}

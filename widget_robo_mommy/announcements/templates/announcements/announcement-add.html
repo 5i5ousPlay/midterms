@@ -3,7 +3,12 @@
 
 {% block content %}
 
-<title>Add Announcement</title>
-
+    <title>Add Announcement</title>
+    <h1>Add a new announcement:</h1>
+    <form action="/" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save Changes to Announcement">
+    </form>
 
 {% endblock content %}
