@@ -32,7 +32,7 @@ def Dashboard_list_view(request):
 
 class WidgetUserDetailView(generic.DetailView):
     model = WidgetUser
-    template_name = 'widgetuser-details.html'
+    template_name = 'dashboard/widgetuser-details.html'
     queryset = WidgetUser.objects.all()
     context_object_name = 'widgetuser-detail'
 
@@ -40,7 +40,7 @@ class WidgetUserDetailView(generic.DetailView):
 class WidgetUserAddView(generic.CreateView):
     model = WidgetUser
     fields = '__all__'
-    template_name = 'widgetuser-add.html'
+    template_name = 'dashboard/widgetuser-add.html'
 
     def get_success_url(self):
         return reverse('Dashboard:widgetuser-detail', kwargs={'pk': self.object.id},
@@ -49,9 +49,9 @@ class WidgetUserAddView(generic.CreateView):
 
 class WidgetUserUpdateView(generic.UpdateView):
     model = WidgetUser
-    template_name = 'widgetuser-edit.html'
+    template_name = 'dashboard/widgetuser-edit.html'
     fields = '__all__'
-    success_url = "Dashboard/"
+    success_url = "dashboard/"
 
     def get_success_url(self):
         return reverse('Dashboard:widgetuser-detail', kwargs={'pk': self.object.id},

@@ -34,7 +34,7 @@ def index(request):
     html_string += '''
         </ul>
         <a href="widget_Calendar/Events/add"><button value="click here">New Activity</button></a><br><br>
-        <a href="/Dashboard/">Dashboard</a><br>
+        <a href="/dashboard/">dashboard</a><br>
         <a href="/announcements/">Announcements</a><br>
         <a href="/forum/">Forum</a><br>
         <a href="/assignments">Assignments</a><br>
