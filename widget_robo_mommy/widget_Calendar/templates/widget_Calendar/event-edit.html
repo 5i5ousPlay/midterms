@@ -1,18 +1,15 @@
-{% extends "base.html" %}
+{%  extends 'base.html' %}
 
-{% load static %}
+{% block title %} Edit Activity {% endblock %}
+
+{% block header %} Edit Activity: {% endblock %}
 
 {% block content %}
+    <form action="" method=POST>
+        {% csrf_token %}
 
-<title>Edit Activity</title>
+        {{ form.as_p }}
 
-Edit Activity:<br>
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-
-    <input type="submit" value="Save New Activity" />
-  </a>
-</form>
-  {% endblock content %}
+        <input type="submit" value="Save New Activity">
+    </form>
+{% endblock %}

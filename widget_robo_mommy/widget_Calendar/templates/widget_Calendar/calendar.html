@@ -1,0 +1,31 @@
+{%  extends 'base.html' %}
+
+{% block title %} Widget's Calendar of Activities {% endblock %}
+
+{% block header %} Widget's Calendar of Activities {% endblock %}
+
+{% block content %}
+    <div id = "object_container">
+         <ul id = "object_list">
+            {% for event in events %}
+                <a href="events/{{ event.pk }}/details/" class="item">{{ event.activity }}</a><br>
+            {% endfor %}
+            <br>
+            <li>
+                <a href="events/add/" class="item">New Activity</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block navbar %}
+    <div id = "navbar">
+        <a href = "/dashboard/">Dashboard</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/announcements/">Announcements</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/forum/">Forum</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/assignments/">Assignments</a>
+    </div>
+{% endblock %}

@@ -1,22 +1,15 @@
-{% extends "base.html" %}
+{%  extends 'base.html' %}
 
-{% load static %}
+{% block title %} Add Activity {% endblock %}
+
+{% block header %} Add a new activity: {% endblock %}
 
 {% block content %}
-<title>Add Activity</title>
+    <form action="" method=POST>
+        {% csrf_token %}
 
-Add a new activity:
+        {{ form.as_p }}
 
-<form method="post">
-
-    {% csrf_token %}
-    {{ form.as_p }}
-
-
-        <a href="/Events/{{Event.pk}}/details">
-          <button type="submit">Save New Activity</button>
-        </a>
-        
-
-</form>
-  {% endblock content %}
+        <input type="submit" value="Save New Assignment">
+    </form>
+{% endblock %}
