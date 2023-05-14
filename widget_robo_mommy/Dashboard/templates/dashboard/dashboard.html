@@ -1,18 +1,21 @@
 {%  extends 'base.html' %}
 
-{% block title %} Widget's Forum {% endblock %}
+{% block title %} Widget v2 {% endblock %}
 
-{% block header %} Welcome to Widget's Forum {% endblock %}
+{% block header %} Welcome to Widget! {% endblock %}
 
 {% block content %}
     <div id = "object_container">
+        <h2>
+            Widget Users:
+        </h2>
          <ul id = "object_list">
-            {% for post in posts %}
-                <a href="forumposts/{{ post.pk }}/details/" class="item">{{ post.title }} by {{ post.author.first_name }} {{ post.author.last_name }}</a><br>
+            {% for user in users %}
+                <a href="/widgetusers/{{ user.pk }}/details/" class="item">{{ user.last_name }}, {{ user.first_name }}</a><br>
             {% endfor %}
             <br>
             <li>
-                <a href="forumposts/add/" class="item">New Post</a>
+                <a href="/widgetusers/add/" class="item">Add Widget User</a>
             </li>
         </ul>
     </div>
@@ -20,9 +23,9 @@
 
 {% block navbar %}
     <div id = "navbar">
-        <a href = "/dashboard/">Dashboard</a>
+        <a href="/announcements/">Announcement Board</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="/announcements/">Announcements</a>
+        <a href="/forum/">Forum</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href = "/assignments/">Assignments</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

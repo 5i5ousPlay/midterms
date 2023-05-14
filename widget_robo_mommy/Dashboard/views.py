@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from .models import WidgetUser
 from django.http import HttpResponse
 from django.views import generic
@@ -5,34 +6,18 @@ from django.urls import reverse
 
 
 def Dashboard_list_view(request):
-    html_string_1 = '<html lang="en"><head><meta charset="UTF-8">' \
-                    '<h1>Welcome to Widget</h1>' \
-                    '<h2>WIDGET USERS</h2></head><ul>'
-    html_string_2 = ''
-    for wu in WidgetUser.objects.all():
-        number = str(wu.pk)
-        href = '<a href="/Widgetusers/' + number + '/details">'
-        html_string_2 += '<li>' + href + '{}, {} {}: {}, {}' .format(
-            wu.last_name,
-            wu.first_name,
-            wu.middle_name,
-            wu.department.dept_name,
-            wu.department.home_unit
-            )
-    html_string_2 += '</ul></li>'
-    html_string_3 = '<a href="/Widgetusers/add"><button value="click here" > Add Widget User</button></a><br><br>'
-    html_string_3 += '<a href="/announcements/">Announcement Board</a><br>'
-    html_string_3 += '<a href="/forum/">Forum</a><br>'
-    html_string_3 += '<a href="/assignments">Assignment</a><br>'
-    html_string_3 += '<a href="/widget_Calendar/">Calendar</a><br>'
-    html_string_final = html_string_1 + html_string_2 + html_string_3 + '</html>'
+    users = WidgetUser.objects.all()
+    context = {
+        'users': users
+    }
+    return render(request, 'dashboard/dashboard.html', context)
 
-    return HttpResponse(html_string_final)
+
 
 
 class WidgetUserDetailView(generic.DetailView):
     model = WidgetUser
-    template_name = 'widgetuser-details.html'
+    template_name = 'dashboard/widgetuser-details.html'
     queryset = WidgetUser.objects.all()
     context_object_name = 'widgetuser-detail'
 
@@ -40,7 +25,7 @@ class WidgetUserDetailView(generic.DetailView):
 class WidgetUserAddView(generic.CreateView):
     model = WidgetUser
     fields = '__all__'
-    template_name = 'widgetuser-add.html'
+    template_name = 'dashboard/widgetuser-add.html'
 
     def get_success_url(self):
         return reverse('Dashboard:widgetuser-detail', kwargs={'pk': self.object.id},
@@ -49,9 +34,9 @@ class WidgetUserAddView(generic.CreateView):
 
 class WidgetUserUpdateView(generic.UpdateView):
     model = WidgetUser
-    template_name = 'widgetuser-edit.html'
+    template_name = 'dashboard/widgetuser-edit.html'
     fields = '__all__'
-    success_url = "Dashboard/"
+    success_url = "dashboard/"
 
     def get_success_url(self):
         return reverse('Dashboard:widgetuser-detail', kwargs={'pk': self.object.id},

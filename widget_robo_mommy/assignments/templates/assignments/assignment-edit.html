@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
+
+{% block title %} Edit Assignment {% endblock %}
+
+{% block header %} Edit Assignment: {% endblock %}
 
 {% block content %}
-    <title>Edit Assignment</title>
-
-    <h1>Edit Assignment.</h1>
-
     <form action="" method=POST>
         {% csrf_token %}
+
         {{ form.as_p }}
+
         <input type="submit" value="Save Changes to Assignment">
     </form>
-{%  endblock content %}
+{% endblock %}

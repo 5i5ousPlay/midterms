@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
 
-{% load static %}
+{% block title %} {{ posts.title }} {% endblock %}
+
+{% block header %} {{ posts.title }} {% endblock %}
 
 {% block content %}
-    <title>{{ posts.title }}</title>
-    <h1>{{ posts.title }}</h1>
     <h2>by {{ posts.author.first_name }} {{ posts.author.last_name }}</h2>
     <p>{{ posts.pub_datetime|date:"M/d/Y, f A"}}</p>
     <p>{{ posts.body }}</p>
@@ -14,5 +14,7 @@
         {{ reply.pub_datetime|date:"M/d/Y, f A"}}<br>
         {{ reply.body }}<br><br>
     {% endfor %}
-    <a href="/forum/forumposts/{{ posts.pk }}/edit/"><button value="click here">Edit Post</button></a>
-{%  endblock content %}
+    <li>
+        <a href="/forum/forumposts/{{ posts.pk }}/edit/" class="item">Edit Post</a>
+    </li>
+{% endblock %}

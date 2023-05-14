@@ -1,0 +1,15 @@
+{%  extends 'base.html' %}
+
+{% block title %} {{ object.last_name }}, {{ object.first_name }} {% endblock %}
+
+{% block header %} {{ object.first_name }} {{ object.middle_name }} {{ object.last_name }} {% endblock %}
+
+{% block content %}
+    <p>
+        {{ object.department.dept_name }} <br>
+        {{ object.department.home_unit }} <br>
+    </p>
+    <li>
+    	<a href = "/widgetusers/{{ object.pk }}/edit/" class="item">Edit Widget User</a>
+    </li>
+{% endblock %}

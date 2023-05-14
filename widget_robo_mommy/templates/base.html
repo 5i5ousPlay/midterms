@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html>
-<body>
+{% load static %}
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 
-    
-{% block content %}
-{% endblock content %}<br>
+    <head>
+        <title> {% block title %} Title {% endblock %}</title>
+    </head>
+    <div id = "main">
+        <body>
+            <h1>
+                {% block header %} Header {% endblock %}
+            </h1>
 
-
-
-</body>
+            <div id = "content">
+                {% block content %} Content {% endblock %}
+            </div>
+            {% block navbar %} {% endblock %}
+        </body>
+    </div>
 </html>

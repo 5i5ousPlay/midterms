@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
+
+{% block title %} {{ assignment.name }} {% endblock %}
+
+{% block header %} {{ assignment.name }} {% endblock %}
 
 {% block content %}
-    <title>{{ assignment.name }}</title>
-
-    <h1>{{ assignment.name }}</h1>
-
     <p>
         {{ assignment.course.code }} {{ assignment.course.title }}-{{ assignment.course.section }} <br><br>
         Description: {{ assignment.description }} <br>
@@ -12,6 +12,6 @@
         Passing Score: {{ assignment.passing_score }} <br>
     </p>
     <li>
-        <a href="{{ assignment.get_update_url }}">Edit Assignment</a>
+        <a href="{{ assignment.get_update_url }}" class="item">Edit Assignment</a>
     </li>
 {% endblock %}

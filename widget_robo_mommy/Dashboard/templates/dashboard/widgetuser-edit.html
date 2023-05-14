@@ -1,0 +1,15 @@
+{%  extends 'base.html' %}
+
+{% block title %} Edit Widget User {% endblock %}
+
+{% block header %} Edit Widget User: {% endblock %}
+
+{% block content %}
+    <form action="" method=POST>
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <input type="submit" value="Save Changes to Widget User">
+    </form>
+{% endblock %}
