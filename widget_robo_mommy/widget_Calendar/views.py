@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from .models import Event
 from django.http import HttpResponse
 from forum.views import convert_utc_to_local
@@ -6,40 +7,11 @@ from django.urls import reverse
 
 
 def index(request):
-    html_string = '''
-    <title>robo_mommy’s Calendar of Activities</title>
-    <h2>robo_mommy’s Calendar of Activities</h2><ul>
-    '''
-    for eventItem in Event.objects.all():
-        eventId = str(eventItem.pk)
-        href = '<a href="widget_Calendar/Events/'+eventId+'/details">'
-        html_string += '''
-            <br><li> {}
-            Date and Time: {}<br>
-            Activity: {}<br>
-            Estimated Hours: {}<br>
-            Course/Section: {}<br>
-            Mode: {}<br>
-            Venue: {}<br>
-            </li><br>
-        '''.format(
-            href,
-            convert_utc_to_local(eventItem.target_datetime, '%d/%m/%Y|%I:%M %p'),
-            eventItem.activity,
-            eventItem.estimated_hours,
-            eventItem.course.code,
-            eventItem.location.mode,
-            eventItem.location.venue,
-        )
-    html_string += '''
-        </ul>
-        <a href="widget_Calendar/Events/add"><button value="click here">New Activity</button></a><br><br>
-        <a href="/dashboard/">dashboard</a><br>
-        <a href="/announcements/">Announcements</a><br>
-        <a href="/forum/">Forum</a><br>
-        <a href="/assignments">Assignments</a><br>
-        '''
-    return HttpResponse(html_string)
+    events = Event.objects.all()
+    context = {
+        'events': events
+    }
+    return render(request, 'widget_Calendar/calendar.html', context)
 
 
 class EventDetailView(generic.DetailView):
