@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
 
-{% load static %}
+{% block title %} Add Post {% endblock %}
+
+{% block header %} Add a new post: {% endblock %}
 
 {% block content %}
-    <title>Add Post</title>
-    <h1>Add a new post:</h1>
-    <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+    <form action="" method=POST>
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
         <input type="submit" value="Save New Post">
     </form>
-{%  endblock content %}
+{% endblock %}

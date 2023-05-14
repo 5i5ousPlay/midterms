@@ -1,21 +1,31 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
 
-{% load static %}
+{% block title %} Widget's Forum {% endblock %}
+
+{% block header %} Welcome to Widget's Forum {% endblock %}
 
 {% block content %}
-    <title>Widget's Forum</title>
-    <h1>Welcome to Widget's Forum</h1>
+    <div id = "object_container">
+         <ul id = "object_list">
+            {% for post in posts %}
+                <a href="forumposts/{{ post.pk }}/details/" class="item">{{ post.title }} by {{ post.author.first_name }} {{ post.author.last_name }}</a><br>
+            {% endfor %}
+            <br>
+            <li>
+                <a href="forumposts/add/" class="item">New Post</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
 
-    <h2>Forum posts:</h2>
-    {% for post in posts %}
-    <a href="forumposts/{{ post.pk }}/details/">{{ post.title }} by {{ post.author.first_name }} {{ post.author.last_name }}</a><br>
-    {% endfor %}
-    <br><br>
-
-    <a href="forumposts/add/"><button value="click here">New Post</button></a><br><br>
-
-    <a href="/Dashboard/">Dashboard</a><br>
-    <a href="/announcements/">Announcements</a><br>
-    <a href="/assignments/">Assignments</a><br>
-    <a href="/widget_Calendar/">Calendar</a><br>
-{%  endblock content %}
+{% block navbar %}
+    <div id = "navbar">
+        <a href = "/dashboard/">Dashboard</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/announcements/">Announcements</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/assignments/">Assignments</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/calendar/">Calendar</a>
+    </div>
+{% endblock %}
