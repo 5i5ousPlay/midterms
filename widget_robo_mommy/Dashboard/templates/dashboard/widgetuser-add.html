@@ -1,20 +1,15 @@
-{% extends "base.html" %}
+{%  extends 'base.html' %}
 
-{% load static %}
+{% block title %} Add Widget User {% endblock %}
+
+{% block header %} Add a new Widget user: {% endblock %}
 
 {% block content %}
-<h1>Add Widget User</h1>
+    <form action="" method=POST>
+        {% csrf_token %}
 
-<form method="post">
+        {{ form.as_p }}
 
-    {% csrf_token %}
-    {{ form.as_p }}
-
-
-        <a href="/Widgetusers/{{WidgetUser.pk}}/details">
-          <button type="submit">Add Widget User</button>
-        </a>
-        
-
-</form>
-  {% endblock content %}
+        <input type="submit" value="Add Widget User">
+    </form>
+{% endblock %}

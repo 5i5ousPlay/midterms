@@ -1,15 +1,15 @@
-{% extends "base.html" %}
+{%  extends 'base.html' %}
 
-{% load static %}
+{% block title %} Edit Widget User {% endblock %}
+
+{% block header %} Edit Widget User: {% endblock %}
 
 {% block content %}
-<h1>Edit Widget User</h1>
+    <form action="" method=POST>
+        {% csrf_token %}
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
+        {{ form.as_p }}
 
-    <input type="submit" value="Edit Widget User" />
-  </a>
-</form>
-  {% endblock content %}
+        <input type="submit" value="Save Changes to Widget User">
+    </form>
+{% endblock %}
