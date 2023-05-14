@@ -11,5 +11,7 @@
         {% for react in announce.react.all %}
                 {{ react.name }}: {{ react.tally }}<br>
         {% endfor %}
-	<a href = "/announcements/{{ announce.pk }}/edit/"><button value="">Edit Announcement</button></a>
+    <li>
+    	<a href = "/announcements/{{ announce.pk }}/edit/" class="item">Edit Announcement</a>
+    </li>
 {% endblock %}

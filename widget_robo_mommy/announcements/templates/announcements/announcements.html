@@ -12,8 +12,9 @@
                     <a href = "{{ announce.pk }}/details/" class = "item">{{ announce.title }} by {{ announce.author.first_name }} {{ announce.author.last_name }}</a> <br>
                 </li>
             {% endfor %}
-             <a href="add/" class="item"><button value="click here">Add Announcement</button></a><br><br>
-
+             <li>
+                 <a href="add/" class="item">Add Announcement</a>
+             </li>
         </ul>
     </div>
 {% endblock %}
