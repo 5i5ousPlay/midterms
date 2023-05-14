@@ -1,13 +1,15 @@
-{% extends 'base.html' %}
+{%  extends 'base.html' %}
+
+{% block title %} Add Assignment {% endblock %}
+
+{% block header %} Add a new assignment: {% endblock %}
 
 {% block content %}
-    <title>Add Assignment</title>
-
-    <h1>Add a new assignment:</h1>
-
     <form action="" method=POST>
         {% csrf_token %}
+
         {{ form.as_p }}
+
         <input type="submit" value="Save New Assignment">
     </form>
-{%  endblock content %}
+{% endblock %}

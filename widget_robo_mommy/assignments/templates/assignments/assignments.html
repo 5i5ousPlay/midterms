@@ -1,20 +1,32 @@
-{% extends 'base.html' %}
+
+{%  extends 'base.html' %}
+
+{% block title %} Widget's Assignments {% endblock %}
+
+{% block header %} Welcome to Widget's Assignments! {% endblock %}
 
 {% block content %}
-    <title>Widget's Assignments</title>
+    <div id = "object_container">
+         <ul id = "object_list">
+            {% for assignment in assignments %}
+                <a href="{{ assignment.pk }}/details/" class="item">{{ assignment.name }}</a><br>
+            {% endfor %}
+            <br>
+            <li>
+                <a href="add/" class="item">New Assignment</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
 
-    <h1>Welcome to Widget's Assignments!</h1>
-
-    {% for assignment in assignments %}
-        <a href="{{ assignment.pk }}/details/">{{ assignment.name }}</a><br>
-    {% endfor %}
-
-    <br>
-
-    <a href="add/"><button value="click here">New Assignment</button></a><br><br>
-
-    <a href="/Dashboard/">Dashboard</a><br>
-    <a href="/announcements/">Announcements</a><br>
-    <a href="/forum/">Forum</a><br>
-    <a href="/widget_Calendar/">Calendar</a><br>
-{%  endblock content %}
+{% block navbar %}
+    <div id = "navbar">
+        <a href = "/dashboard/">Dashboard</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/announcements/">Announcements</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/forum/">Forum</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/widget_Calendar/">Calendar</a>
+    </div>
+{% endblock %}
