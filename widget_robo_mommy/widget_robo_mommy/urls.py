@@ -19,7 +19,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('announcements.urls', namespace="announcements")),
-    path('widget_Calendar/', include('widget_Calendar.urls', namespace="widget_Calendar")),
+    path('calendar/', include('widget_Calendar.urls', namespace="widget_Calendar")),
     path('', include('Dashboard.urls', namespace="dashboard")),
     path('admin/', admin.site.urls),
     path('assignments/', include('assignments.urls', namespace="assignments")),
