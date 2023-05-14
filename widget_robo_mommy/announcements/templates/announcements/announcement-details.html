@@ -1,20 +1,15 @@
-{% extends 'base.html' %}
-{% load static %}
+{%  extends 'base.html' %}
+
+{% block title %} {{ announce.title }} {% endblock %}
+
+{% block header %} {{ announce.title }} {% endblock %}
 
 {% block content %}
-
-    <title>{{ announce.title }}</title>
-
-    <h1>{{ announce.title }}</h1>
     <h2>by {{ announce.author.first_name }} {{ announce.author.last_name }}</h2>
     <p>{{ announce.pub_datetime|date:'m/d/Y, h:i A' }}</p>
-	
     <p>{{ announce.body }}</p>
-	<p>
         {% for react in announce.react.all %}
-            {{ react.name }}: {{ react.tally }}<br>
+                {{ react.name }}: {{ react.tally }}<br>
         {% endfor %}
-	</p>
-
 	<a href = "/announcements/{{ announce.pk }}/edit/"><button value="">Edit Announcement</button></a>
-{% endblock content %}
+{% endblock %}

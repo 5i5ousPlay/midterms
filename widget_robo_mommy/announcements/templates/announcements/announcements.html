@@ -1,21 +1,31 @@
-{% extends 'base.html' %}
-{% load static %}
+{%  extends 'base.html' %}
+
+{% block title %} Widget's Announcement Board {% endblock %}
+
+{% block header %} Welcome to Widget's Announcement Board! {% endblock %}
 
 {% block content %}
+    <div id = "object_container">
+         <ul id = "object_list">
+            {% for announce in announcement %}
+                <li>
+                    <a href = "{{ announce.pk }}/details/" class = "item">{{ announce.title }} by {{ announce.author.first_name }} {{ announce.author.last_name }}</a> <br>
+                </li>
+            {% endfor %}
+             <a href="add/" class="item"><button value="click here">Add Announcement</button></a><br><br>
 
-    <title>Widget's Announcement Board</title>
-    <h1>Welcome to Widget's Announcement Board!</h1>
+        </ul>
+    </div>
+{% endblock %}
 
-    <h3>Announcements:</h3>
-    {% for announce in announcement %}
-        <a href = "{{ announce.pk }}/details/">{{ announce.title }} by {{ announce.author.first_name }} {{ announce.author.last_name }}</a><br>
-    {% endfor %} <br>
-	
-    <a href="add/"><button value="click here">Add Announcement</button></a><br><br>
-
-    <a href = "/Dashboard/">Dashboard</a><br>
-    <a href = "/forum/">Forum</a><br>
-    <a href = "/assignments/">Assignments</a><br>
-    <a href = "/widget_Calendar/">Calendar</a>
-
-{% endblock content %}
+{% block navbar %}
+    <div id = "navbar">
+        <a href = "/dashboard/">Dashboard</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/forum/">Forum</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/assignments/">Assignments</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href = "/widget_Calendar/">Calendar</a>
+    </div>
+{% endblock %}
